@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestToDo.Views.TodoItemView">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="8" VerticalOptions="StartAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name" />
+                    <Entry Text="{Binding Item.TodoName}" Placeholder="Enter name..." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Created" />
+                    <DatePicker Date="{Binding Item.Created}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Completed" />
+                    <Switch IsToggled="{Binding Item.Completed}" />
+                </StackLayout>
+                <Button Text="Save" Command="{Binding SaveCommand}" />
+                <Button Text="Delete" Command="{Binding DeleteCommand}" IsVisible="{Binding ExistingTodo}"/>
+                <Button Text="Close" Command="{Binding CancelCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

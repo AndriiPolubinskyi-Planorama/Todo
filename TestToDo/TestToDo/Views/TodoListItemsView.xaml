@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestToDo"
+             x:Class="TestToDo.Views.TodoItemsView" BackgroundColor="Azure">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text ="Add" Clicked="OnAddClicked"
+                Priority="0" Order="Primary"  />
+        <ToolbarItem Text ="Sort by Name"  Command="{Binding SortByCommand}" CommandParameter="TodoName"
+              Priority="1" Order="Secondary" />
+        <ToolbarItem Text ="Sort by Date" Command="{Binding SortByCommand}" CommandParameter="Created"
+              Priority="1" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="lvItems" ItemsSource="{Binding Items}" ItemSelected="OnItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding TodoName}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                        <Switch IsToggled="{Binding Completed}" IsEnabled="False"></Switch> 
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
